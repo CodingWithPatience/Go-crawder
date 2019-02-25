@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" />
+		<link rel="stylesheet" href="css/Site.css" />
+		<link rel="stylesheet" href="css/zy.all.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/amazeui.min.css" />
+		<link rel="stylesheet" href="css/admin.css" />
+		<style>
+		
+		</style>
+	<body>
+		<div class="dvcontent">
+            <div style="text-align: center">
+                <form class="am-form-group" action="search" method="get">
+                    <input type="text" maxlength="200" width="200" class="am-form-inline" value="{{.Query}}" name="q"/>
+                    <button type="submit" class="am-form-inline">搜索</button>
+                </form>
+                <h3>共为你找到{{.Hits}}个结果</h3>
+            </div>
+            <div class="bd container">
+                <table class="table" id="tbRecord">
+                    <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th>导演</th>
+                            <th>类型</th>
+                            <th>主演</th>
+                            <th>时长</th>
+                            <th>上映日期</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{range .Items}}
+                        <tr>
+                           <td><a href="{{.Url}}">{{.Content.Title}}</a></td>
+                            <td>{{.Content.Director}}</td>
+                            <td>{{.Content.Type}}</td>
+                            <td>{{.Content.Casting.Actor}}</td>
+                            <td>{{.Content.Duration}}</button></td>
+                            <td>{{.Content.ReleaseDate}}</td>
+                        </tr>
+                        {{else}}
+                        <div>没有找到相关内容</div>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+		</div>
+	</body>
+
+</html>
